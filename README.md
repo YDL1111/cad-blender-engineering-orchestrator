@@ -4,6 +4,8 @@
 
 **版本：0.1.0 · 作者：YDL1111 · 许可证：[MIT](LICENSE)**
 
+本项目定位为**工程任务的编排与验证层**，不是自研 CAD/Blender 软件控制引擎。软件操作可以复用开源 MCP 或软件原生脚本/API；本 Skill 把这些能力组织成有需求确认、任务交接、独立审核和版本化交付的完整流程。
+
 你可以先用自然语言描述想做的设备或空间。Skill 会整理需求、提出必要的问题，等关键条件确认后，再安排 CAD 建模、Blender 展示、独立审核和交付。你主要与总控 Agent 对话，不需要自己逐个指挥 CAD、Blender 和审核 Agent。
 
 **第一次使用建议：先安装 → 检查软件路径 → 做一个小模型 → 再尝试完整项目。**
@@ -42,6 +44,29 @@
 目前已在 Windows 上通过 FreeCAD 和 Blender 的脚本接口完成实际验证。其他 CAD 软件需要满足相应接口契约并经过验证；仅安装 AutoCAD 或 Revit，并不代表本版本已经能够直接使用它们。
 
 纯 CAD 修改、纯 Blender 艺术创作、工程仿真，以及需要正式制造批准或工程师签章的任务，不属于本 Skill 的主要范围。
+
+## 工具基础与开源致谢
+
+本项目的探索和使用过程中采用了以下两个开源 MCP 项目。感谢上游作者及贡献者提供的软件连接与操作能力：
+
+| 开源项目 | 提供的能力 | 许可证与署名 |
+|---|---|---|
+| [ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp)（现名 [mcp-for-blender](https://github.com/ahujasid/mcp-for-blender)） | 连接 AI 客户端与 Blender，提供场景查询、对象与材质操作、Blender Python 执行等能力 | [MIT](https://github.com/ahujasid/mcp-for-blender/blob/main/LICENSE)；Copyright © 2025 Siddharth Ahuja |
+| [neka-nat/freecad-mcp](https://github.com/neka-nat/freecad-mcp) | 连接 AI 客户端与 FreeCAD，提供模型创建与编辑、文档查询、FreeCAD Python 脚本执行等能力 | [MIT](https://github.com/neka-nat/freecad-mcp/blob/main/LICENSE)；Copyright © 2025 Shirokuma (k tanaka) |
+
+可以这样理解分工：
+
+- **FreeCAD / Blender**：实际完成几何计算、建模、保存和渲染。
+- **开源 MCP 或原生脚本/API**：让 Agent 能够调用软件里的操作。
+- **本 Skill**：规定先确认什么需求、给哪个 Agent 什么任务、以哪个版本为准、怎么审核，以及什么条件下才能交付。
+
+因此，本项目的主要贡献是需求基线、Project Manifest、Work Packet、状态机、独立回读与审核、跨软件一致性校验，以及 accepted/working 交付隔离。上述开源 MCP 的软件操作接口不作为本项目的自研成果。
+
+**这里的开源致谢与测试范围需要区分。** 发布前的小规模实机 smoke test 使用 FreeCAD/Blender 原生脚本/API及独立软件进程完成，不代表已经对这两个 MCP 的所有版本或全部功能完成兼容性认证。换用 MCP 执行时，仍需检查实际连接、操作、保存、导出和回读能力。
+
+如果希望通过 MCP 操作软件，请分别参考上游的 [Blender MCP 安装与使用说明](https://github.com/ahujasid/mcp-for-blender#quickstart)和 [FreeCAD MCP 安装与使用说明](https://github.com/neka-nat/freecad-mcp#readme)。Skill 安装、MCP 配置、软件插件启用是不同步骤；只复制本 Skill 不会自动完成后两步。
+
+本仓库发布包不包含上述 MCP 的源码或安装包。它们以及 FreeCAD、Blender 均遵循各自许可证；本项目的 MIT 许可证不替代上游许可证。
 
 ## 它是怎么工作的？
 
@@ -92,7 +117,7 @@ CAD 保存受控尺寸和工程几何，是项目的权威来源。Blender 主�
 
 Skill 自带运行脚本使用 Python 标准库。开发者工具 `skill-creator` 中的 `quick_validate.py` 另外需要 PyYAML；普通使用者不必为了运行 Skill 专门执行这个开发者校验。
 
-本仓库包含工作流程、模板和验证工具，FreeCAD 与 Blender 需要另外安装。执行 Agent 会根据工作包编写或运行对应的软件操作脚本。本版本不要求必须安装 CAD/Blender MCP，也不会自动安装软件或建立 MCP 连接。
+本仓库包含工作流程、模板和验证工具，FreeCAD 与 Blender 需要另外安装。执行 Agent 根据工作包，通过已验证可用的 MCP 工具或原生脚本/API 操作软件。本版本不要求必须安装 CAD/Blender MCP，也不会自动安装软件或建立 MCP 连接；发布前实机验证采用的是原生脚本/API 路径。
 
 ## 安装 Skill
 
@@ -168,6 +193,8 @@ python scripts\check_environment.py
 项目目录也可通过 `~/.config/cad-blender-engineering-orchestrator/config.json` 配置。该文件目前只配置 `projects_root`，软件路径使用显式参数或环境变量。详见[配置说明](docs/configuration.md)。
 
 ### 怎么看检测结果？
+
+下面的软件路径检测针对原生脚本执行，不能代替 MCP 连接测试。使用 MCP 时，还需确认服务及软件侧插件可用，并真正执行一次操作和结果查询；仅有配置项或工具名称不代表连接成功。
 
 - `preflight_ready: true`：基础检查通过，可继续验证真实保存、导出和回读能力。
 - `blockers` 非空：存在阻塞项，例如软件路径不存在或版本查询失败，先按报告修正。
@@ -301,6 +328,14 @@ CAD 是权威几何；Blender 要保留真实设备和管路形状，
 `SKILL.md` 负责流程；`references/` 存放角色和领域规则；`assets/` 提供模板；`scripts/` 执行确定性验证；`agents/openai.yaml` 提供名称、简介和默认调用提示等入口信息。
 
 ## 常见问题
+
+### 已经能用 MCP 建模，为什么还需要这个 Skill？
+
+MCP 解决的是“Agent 怎么操作软件”；本 Skill 解决的是“如何把一个需求可靠地做成可检查、可追溯的跨软件成果”。例如，MCP 能创建一个圆柱，但不会仅凭这一操作保证它符合已确认尺寸、进入了正确版本、在 Blender 中保持形状，或具备独立回读和交付证据。两者是不同层次的能力，配合使用。
+
+### 安装 Skill 后，会自动连上两个 MCP 吗？
+
+不会。需要按上游说明分别安装和配置 MCP，并确认软件侧插件及连接实际可用。也可以使用已验证的原生脚本/API 路径。无论使用哪种接口，都要满足相同的工作包、独立回读、审核和交付要求；接口可用不等于工程验收通过。
 
 ### Codex 没有发现 Skill
 
