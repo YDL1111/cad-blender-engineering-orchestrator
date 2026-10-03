@@ -11,6 +11,8 @@ dist/
 *.step
 *.stp
 *.png
+!docs/images/dual-pump-cad.png
+!docs/images/dual-pump-blender.png
 *.jpg
 *.jpeg
 *.zip
