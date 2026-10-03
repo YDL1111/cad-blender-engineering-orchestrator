@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "geometry_fidelity_result",
+  "project_id": "example-project",
+  "revision": 1,
+  "manifest_revision": 1,
+  "declared": {"level": "exact_mesh", "permitted_deviation_mm": 0.001, "required_checks": ["mesh topology evidence", "controlled dimensions", "transforms"], "intended_use": "Final presentation model derived from accepted CAD geometry."},
+  "topology_evidence": {
+    "cad_mesh": {"path": "cad/exports/canonical-mesh-v1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "blender_mesh": {"path": "blender/exports/canonical-mesh-v1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "cad_metrics": {"vertex_count": 8, "edge_count": 12, "face_count": 6, "component_count": 1, "geometry_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "objects": {"PART-001": {"vertex_count": 8, "edge_count": 12, "face_count": 6, "component_count": 1, "geometry_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}}},
+    "blender_metrics": {"vertex_count": 8, "edge_count": 12, "face_count": 6, "component_count": 1, "geometry_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "objects": {"PART-001": {"vertex_count": 8, "edge_count": 12, "face_count": 6, "component_count": 1, "geometry_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}}},
+    "topology_match": true
+  },
+  "measurement_evidence": {
+    "cad_snapshot": {"path": "cad/exports/cad-snapshot.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "blender_snapshot": {"path": "blender/exports/blender-snapshot.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+  },
+  "controlled_object_coverage": {"expected_object_ids": ["PART-001"], "verified_object_ids": ["PART-001"], "coverage_fraction": 1.0},
+  "measurement_results": [{"object_id": "PART-001", "property": "width", "cad_value": 100.0, "blender_value": 100.0, "deviation_mm": 0.0, "passed": true}],
+  "outcome": "PASS"
+}

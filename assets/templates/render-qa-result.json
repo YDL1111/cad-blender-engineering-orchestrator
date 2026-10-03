@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "render_qa_result",
+  "project_id": "example-project",
+  "revision": 1,
+  "profile": {"path": "render/render-qa-profile-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "images": [
+    {"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "width_px": 1920, "height_px": 1080, "camera": "overview", "camera_metadata": {"path": "blender/renders/overview-camera.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}, "camera_check_passed": true, "resolution_check_passed": true},
+    {"path": "blender/renders/clearance-plan.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "width_px": 1920, "height_px": 1080, "camera": "clearance-plan", "camera_metadata": {"path": "blender/renders/clearance-plan-camera.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}, "camera_check_passed": true, "resolution_check_passed": true}
+  ],
+  "deterministic_checks": [
+    {"check_id": "resolution", "passed": true},
+    {"check_id": "subject_frame_fraction", "measured": 0.72, "required": 0.35, "passed": true},
+    {"check_id": "plan_projection", "measured": "orthographic", "required": "orthographic", "passed": true},
+    {"check_id": "clean_overview_exclusions", "measured": ["maintenance_envelopes", "cable_tray_occlusion"], "passed": true},
+    {"check_id": "output_separation", "measured": {"clearance_inspection": "blender/renders/clearance-plan.png", "presentation_render": "blender/renders/overview.png"}, "passed": true},
+    {"check_id": "camera_metadata", "passed": true}
+  ],
+  "manual_checks": [
+    {"check_id": "label_readability", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]},
+    {"check_id": "exposure", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]},
+    {"check_id": "brightness", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]},
+    {"check_id": "contrast", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]},
+    {"check_id": "legend_or_labels", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]},
+    {"check_id": "clean_overview", "reviewer": "independent-visual-reviewer", "outcome": "PASS", "evidence": [{"path": "blender/renders/overview.png", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]}
+  ],
+  "outcome": "PASS"
+}

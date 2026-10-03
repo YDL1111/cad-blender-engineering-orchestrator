@@ -1,0 +1,7 @@
+interface:
+  display_name: "CAD Blender Engineering Orchestrator"
+  short_description: "Controlled CAD-to-Blender engineering delivery"
+  default_prompt: "Use $cad-blender-engineering-orchestrator to turn my dimensioned engineering request into a controlled CAD-to-Blender delivery workflow."
+policy:
+  allow_implicit_invocation: true
+

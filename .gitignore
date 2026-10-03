@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+dist/
+.pytest_cache/
+.venv/
+*.log
+*.FCStd
+*.FCStd1
+*.blend
+*.blend1
+*.step
+*.stp
+*.png
+*.jpg
+*.jpeg
+*.zip
+config.json

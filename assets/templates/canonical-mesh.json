@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "canonical_mesh",
+  "project_id": "example-project",
+  "revision": 1,
+  "source": {"path": "cad/source/example.FCStd", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "units": "mm",
+  "objects": [{
+    "object_id": "PART-001",
+    "vertices": [[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[1,0,1],[1,1,1],[0,1,1]],
+    "faces": [[0,1,2,3],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]]
+  }]
+}

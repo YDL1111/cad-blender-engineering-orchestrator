@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "delivery_report",
+  "project_id": "example-project",
+  "revision": 1,
+  "delivery_contract_version": "3.0",
+  "accepted_release": {"revision": 1, "path": "delivery/accepted/r1", "immutable": true},
+  "working_copy_policy": {"path": "working", "excluded_from_delivery_hashes": true, "default_open_location": true},
+  "accepted_revisions": {"requirements": 1, "manifest": 3, "cad_result": 1, "blender_result": 1},
+  "manifest_lineage": [
+    {"revision": 1, "parent_revision": null, "path": "manifests/manifest-v1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    {"revision": 2, "parent_revision": 1, "path": "manifests/manifest-v2.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    {"revision": 3, "parent_revision": 2, "path": "manifests/manifest-v3.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+  ],
+  "stage_results": {"cad": "cad/stage-result-v1.json", "blender": "blender/stage-result-v1.json"},
+  "project_state_path": "project-state.json",
+  "deliverables": ["cad/source/example.FCStd", "blender/example.blend", "cad/exports/canonical-mesh-v1.json", "blender/exports/canonical-mesh-v1.json", "blender/renders/overview.png", "blender/renders/clearance-plan.png"],
+  "readback_evidence": ["cad/exports/cad-snapshot.json", "blender/exports/blender-snapshot.json", "blender/qa/geometry-fidelity-result-v1.json", "blender/qa/render-qa-result-v1.json"],
+  "review_outcomes": ["reviews/cad-review-v1.json", "reviews/blender-review-v1.json", "reviews/cross-software-v1.json"],
+  "artifact_hashes": {
+    "cad/source/example.FCStd": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/example.blend": "0000000000000000000000000000000000000000000000000000000000000000",
+    "cad/exports/cad-snapshot.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/exports/blender-snapshot.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "cad/exports/canonical-mesh-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/exports/canonical-mesh-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/renders/overview.png": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/renders/clearance-plan.png": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/renders/overview-camera.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/renders/clearance-plan-camera.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/qa/geometry-fidelity-result-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "blender/qa/render-qa-result-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "reviews/cad-review-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "reviews/blender-review-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "reviews/cross-software-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"cad/stage-result-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"blender/stage-result-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"project-state.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"manifests/manifest-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"manifests/manifest-v2.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"manifests/manifest-v3.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    ,"render/render-qa-profile-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "hash_ledger": {"path": "delivery/final-hash-ledger-r1.json", "coverage": "delivery_report_and_declared_artifacts"},
+  "package": {"path": "delivery/package-r1.zip", "release_revision": 1},
+  "geometry_fidelity": {"level": "exact_mesh", "permitted_deviation_mm": 0.001, "required_checks": ["mesh topology evidence", "controlled dimensions", "transforms"], "intended_use": "Final presentation model derived from accepted CAD geometry."},
+  "geometry_fidelity_result": {"path": "blender/qa/geometry-fidelity-result-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "render_qa_profile": {"path": "render/render-qa-profile-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "render_qa_result": {"path": "blender/qa/render-qa-result-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "residual_assumptions": [],
+  "limitations": [],
+  "opening_instructions": [],
+  "requires_qualified_review": true
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "project_state",
+  "project_id": "example-project",
+  "revision": 1,
+  "current_state": "raw_request",
+  "active_revisions": {},
+  "last_transition": null,
+  "next_allowed_states": ["requirements_analysis"],
+  "blockers": [],
+  "writer_locks": [],
+  "published_releases": [],
+  "working_copy_root": "working"
+}

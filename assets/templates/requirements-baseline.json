@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "requirements_baseline",
+  "project_id": "example-project",
+  "revision": 1,
+  "state": "baseline_confirmed",
+  "raw_request": "Create a dimension-controlled example object in CAD and prepare it for Blender presentation.",
+  "domain": "mechanical_product",
+  "target_level": "concept",
+  "goals": ["Produce controlled CAD geometry and a consistent Blender presentation model."],
+  "exclusions": ["FEA", "fabrication approval"],
+  "inputs": [],
+  "deliverables": ["CAD source", "Blender scene", "cross-software report"],
+  "requirements": [
+    {
+      "requirement_id": "REQ-001",
+      "name": "overall width",
+      "value": 100.0,
+      "source": "user confirmation",
+      "status": "confirmed",
+      "confidence": 1.0,
+      "reason": "Explicit dimension",
+      "blocks": []
+    },
+    {
+      "requirement_id": "REQ-002",
+      "name": "cross-software absolute comparison tolerance",
+      "value": 0.001,
+      "source": "user confirmation",
+      "status": "confirmed",
+      "confidence": 1.0,
+      "reason": "Accepted engineering comparison tolerance in project units",
+      "blocks": []
+    }
+  ],
+  "unresolved_items": [],
+  "confirmation": {
+    "confirmed_by": "user",
+    "confirmed_at": "2026-01-01T00:00:00Z",
+    "evidence": "conversation reference"
+  }
+}

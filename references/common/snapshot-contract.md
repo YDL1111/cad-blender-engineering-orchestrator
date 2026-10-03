@@ -1,0 +1,9 @@
+# Snapshot contract
+
+`cad_snapshot` and `blender_snapshot` use the same authoritative JSON contract and are validated by `scripts/validate_artifact.py`. Required top-level fields are `schema_version`, `artifact_type`, `project_id`, integer `revision`, `manifest_revision`, exact `manifest_lineage`, `units`, structured `coordinate_system`, and `objects`.
+
+Every object has a unique stable `object_id`, boolean `controlled`, `parent_id`, non-empty `critical_dimensions`, and `transform` with three-number `location`, `rotation_deg`, and `scale` vectors. A non-null parent must identify another object in the same snapshot. Critical dimensions are typed JSON: finite numbers use Manifest tolerance; strings and booleans compare exactly; arrays and objects compare recursively; null is strict. Boolean values are never numeric.
+
+Each snapshot lineage is the exact parent chain ending at the Manifest revision that snapshot actually consumed; each entry binds revision, parent revision, relative path, and SHA-256. CAD and Blender snapshots may end at different revisions. Supply the accepted final chain through `compare_cad_blender.py ... --manifest-lineage <delivery-report-or-lineage.json> --project-root <root>` so the comparator proves both historical revisions are ancestors while also verifying files, hashes, IDs, parent relations, units, coordinates, transforms, and typed dimensions.
+
+For pre-contract snapshots, run `scripts/adapt_legacy_snapshot.py INPUT OUTPUT --project-root PROJECT_ROOT`. The adapter writes a new file only, preserves the source, records every inferred field in `migration_warnings`, and marks the result `legacy_unverified`. Reconstructed legacy lineage never counts as authenticated ancestry because the historical Manifest files lack hash-bound `parent_manifest` links. Comparator output separates `migration_warnings` from `engineering_differences` and cannot report a legacy-adapted comparison as fully consistent.

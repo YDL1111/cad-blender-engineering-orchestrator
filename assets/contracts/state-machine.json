@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "state_machine_definition",
+  "initial_state": "raw_request",
+  "states": {
+    "raw_request": ["requirements_analysis"],
+    "requirements_analysis": ["clarification_required", "requirements_ready"],
+    "clarification_required": ["requirements_analysis", "requirements_ready"],
+    "requirements_ready": ["baseline_confirmed"],
+    "baseline_confirmed": ["planning"],
+    "planning": ["manifest_ready"],
+    "manifest_ready": ["cad_in_progress"],
+    "cad_in_progress": ["cad_review"],
+    "cad_review": ["cad_revision_required", "cad_accepted"],
+    "cad_revision_required": ["cad_in_progress"],
+    "cad_accepted": ["blender_in_progress"],
+    "blender_in_progress": ["blender_review"],
+    "blender_review": ["blender_revision_required", "blender_accepted"],
+    "blender_revision_required": ["blender_in_progress"],
+    "blender_accepted": ["cross_software_review"],
+    "cross_software_review": ["ready_for_delivery", "blender_revision_required", "cad_revision_required"],
+    "ready_for_delivery": ["publishing_delivery"],
+    "publishing_delivery": ["ready_for_delivery", "delivered"],
+    "delivered": ["planning"]
+  }
+}

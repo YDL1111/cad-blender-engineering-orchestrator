@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "delivery_checklist",
+  "project_id": "example-project",
+  "revision": 1,
+  "items": [
+    "Accepted baseline and Manifest revisions are recorded.",
+    "CAD, Blender, and cross-software reviews satisfy their gates.",
+    "Every deliverable path was read back or inspected.",
+    "Promoted Stage Results bind a successful attempt and independent completion receipt.",
+    "Geometry fidelity and project-specific render QA results are disclosed.",
+    "The outer hash ledger covers the final report and excludes itself.",
+    "Residual assumptions, limitations, and human-review needs are disclosed.",
+    "Static validation is not described as live CAD/Blender end-to-end verification."
+  ]
+}

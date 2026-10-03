@@ -1,0 +1,11 @@
+# Work packets
+
+Create one immutable JSON packet per agent and stage from `assets/templates/work-packet.json`. Include artifact type (`cad_work_packet` or `blender_work_packet`), packet revision, accepted baseline and manifest revisions, exact input paths, allowed/prohibited changes, units/coordinates/naming, output paths, acceptance criteria, blockers, stop conditions, and writer-owned files.
+
+CAD packets exclude unrelated Blender rendering and conversation history. Blender packets include only accepted CAD geometry/evidence, controlled IDs and transforms, display rules, outputs, review criteria, the exact Manifest ancestor chain, a `geometry_fidelity` declaration, and a hashed render QA profile. Fidelity levels are `exact_mesh`, `simplified_mesh`, and `envelope_proxy`; each declares permitted deviation, required checks, and intended use. An envelope proxy is neither face-accurate nor a final presentation model. Exact mesh requires mesh/topology evidence and deviation no larger than the accepted tolerance when the Manifest is in millimetres.
+
+Writer scope is an exact list of project-relative paths. Globs, traversal, absolute paths, and implicit directory expansion are unsupported. From the loaded Skill directory, validate CAD packets with `python scripts/validate_work_packet.py <packet> --manifest <manifest> --project-root <project-root>`. Validate Blender packets with the same required `--project-root` plus `--upstream-review <cad-review> --accepted-cad-result <cad-stage-result> --render-qa-profile <profile>`.
+
+Independent reviews use `assets/templates/review-work-packet.json` and `scripts/validate_review_work_packet.py`. The packet hashes every input, identifies exact consumed revisions, selects stage-appropriate profiles, grants write access only to its report and authorized review evidence under `reviews/`, and forbids engineering-artifact changes.
+
+Stage Results, Attempt Records, and Completion Receipts carry the same hash-bound Work Packet reference. Their outputs cannot exceed its exact `output_paths`; overlapping parent/child output grants are rejected. Validate both CAD and Blender packets with `--project-root` so actual Manifest ancestry is authenticated.

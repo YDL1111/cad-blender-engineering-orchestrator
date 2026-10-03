@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "manifest_patch",
+  "project_id": "example-project",
+  "revision": 1,
+  "base_revision": 1,
+  "base_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "proposed_revision": 2,
+  "operations": [
+    {
+      "operation_id": "OP-001",
+      "op": "replace",
+      "path": "/stage_status",
+      "value": "cad_review",
+      "evidence": "cad/exports/cad-snapshot.json"
+    },
+    {
+      "operation_id": "OP-002",
+      "op": "add",
+      "path": "/gate_evidence",
+      "value": ["cad/stage-result-v1.json"],
+      "evidence": "cad/stage-result-v1.json"
+    }
+  ],
+  "evidence_paths": ["cad/exports/cad-snapshot.json", "cad/stage-result-v1.json"],
+  "created_by": "cad-operator",
+  "status": "proposed"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "stage_result",
+  "project_id": "example-project",
+  "revision": 1,
+  "stage": "cad",
+  "packet_id": "CAD-WP-001",
+  "manifest_revision_consumed": 1,
+  "status": "completed",
+  "outputs": ["cad/source/example.FCStd", "cad/exports/cad-snapshot.json"],
+  "readback_evidence": ["cad/exports/cad-snapshot.json"],
+  "evidence_contract_version": "1.0",
+  "work_packet": {"path": "work-packets/cad-work-v1.json", "project_id": "example-project", "revision": 1, "packet_id": "CAD-WP-001", "sha256": "145a8bb53e3b835094da9a48af9c5b7e12bebf87791f9834d311374580cd1f9d"},
+  "promoted_attempt": {"path": "cad/attempts/CAD-WP-001/ATTEMPT-001/attempt-record.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "attempt_id": "ATTEMPT-001"},
+  "completion_receipt": {"path": "cad/attempts/CAD-WP-001/ATTEMPT-001/completion-receipt.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "attempt_id": "ATTEMPT-001"},
+  "unresolved_items": [],
+  "manifest_patch_path": "manifests/patches/cad-result-v1-patch.json"
+}

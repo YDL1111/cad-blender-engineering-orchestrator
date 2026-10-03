@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "cad_work_packet",
+  "project_id": "example-project",
+  "revision": 1,
+  "packet_id": "CAD-WP-001",
+  "stage": "cad",
+  "baseline_revision": 1,
+  "manifest_revision": 1,
+  "manifest_sha256": "f45dca8990b4169b30173eebe7932790725f0d2d0a4b1c2a50fbbf897f60064e",
+  "source_manifest_revision": 1,
+  "manifest_lineage": [{"revision": 1, "parent_revision": null, "path": "manifests/manifest-v1.json", "sha256": "f45dca8990b4169b30173eebe7932790725f0d2d0a4b1c2a50fbbf897f60064e"}],
+  "input_paths": ["requirements/baseline-v1.json", "manifests/manifest-v1.json"],
+  "allowed_changes": ["Create controlled CAD geometry for PART-001."],
+  "prohibited_changes": ["Do not alter the master Manifest or create Blender presentation assets."],
+  "rules": {
+    "units": "mm",
+    "coordinate_system": "+Z up, +Y forward",
+    "naming": "Use Manifest object_id as persistent ID."
+  },
+  "output_paths": ["cad/source/example.FCStd", "cad/exports/cad-snapshot.json"],
+  "acceptance_criteria": ["Read back PART-001 and verify width 100 mm."],
+  "blockers": [],
+  "stop_conditions": ["Missing critical input", "Unsafe overwrite", "Unverified CAD interface"],
+  "writer_scope": ["cad/source/example.FCStd", "cad/exports/cad-snapshot.json"]
+}

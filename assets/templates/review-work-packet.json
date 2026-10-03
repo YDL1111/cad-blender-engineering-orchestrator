@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "review_work_packet",
+  "project_id": "example-project",
+  "revision": 1,
+  "packet_id": "REVIEW-WP-CAD-001",
+  "review_stage": "cad",
+  "reviewer_identity": "independent-engineering-reviewer",
+  "reviewer_independent": true,
+  "reviewer_read_only": true,
+  "input_paths": ["manifests/manifest-v1.json", "cad/stage-result-v1.json"],
+  "input_hashes": {
+    "manifests/manifest-v1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "cad/stage-result-v1.json": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "manifest_lineage": [
+    {"revision": 1, "parent_revision": null, "path": "manifests/manifest-v1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+  ],
+  "consumed": {
+    "manifest": {"path": "manifests/manifest-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+    "stage_result": {"path": "cad/stage-result-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+  },
+  "review_profiles": ["common_acceptance", "cad_drawing_review", "mechanical_review"],
+  "output_paths": ["reviews/cad-review-v1.json", "reviews/evidence/cad-review-readback-v1.json"],
+  "writer_scope": ["reviews/cad-review-v1.json", "reviews/evidence/cad-review-readback-v1.json"],
+  "prohibited_changes": ["Do not modify engineering artifacts, manifests, stage results, or operator evidence."],
+  "acceptance_criteria": ["Validate deterministic evidence before independent engineering judgment."],
+  "stop_conditions": ["Input hash mismatch", "Missing evidence", "Reviewer is not independent"]
+}

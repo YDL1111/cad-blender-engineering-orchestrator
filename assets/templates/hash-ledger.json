@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "hash_ledger",
+  "project_id": "example-project",
+  "revision": 1,
+  "self_path": "delivery/final-hash-ledger-r1.json",
+  "coverage": "delivery_report_and_declared_artifacts",
+  "accepted_release": {"revision": 1, "path": "delivery/accepted/r1"},
+  "covered_report": {"path": "delivery/delivery-report-r1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "entries": {
+    "delivery/delivery-report-r1.json": "0000000000000000000000000000000000000000000000000000000000000000",
+    "delivery/accepted/r1/cad/source/example.FCStd": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "excluded_paths": [
+    {"path": "delivery/final-hash-ledger-r1.json", "reason": "A hash ledger never contains its own digest."},
+    {"path": "working", "reason": "Editable working copies are outside immutable delivery evidence."}
+  ]
+}

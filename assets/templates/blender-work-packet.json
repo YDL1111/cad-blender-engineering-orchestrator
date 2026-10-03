@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "blender_work_packet",
+  "project_id": "example-project",
+  "revision": 1,
+  "packet_id": "BLENDER-WP-001",
+  "stage": "blender",
+  "baseline_revision": 1,
+  "manifest_revision": 1,
+  "manifest_sha256": "f45dca8990b4169b30173eebe7932790725f0d2d0a4b1c2a50fbbf897f60064e",
+  "source_manifest_revision": 1,
+  "manifest_lineage": [
+    {"revision": 1, "parent_revision": null, "path": "manifests/manifest-v1.json", "sha256": "f45dca8990b4169b30173eebe7932790725f0d2d0a4b1c2a50fbbf897f60064e"}
+  ],
+  "input_paths": ["manifests/manifest-v1.json", "cad/exports/example.step", "cad/exports/cad-snapshot.json", "render/render-qa-profile-v1.json"],
+  "allowed_changes": ["Add materials, lights, cameras, collections, and presentation-only environment."],
+  "prohibited_changes": ["Do not change controlled geometry, IDs, dimensions, transforms, or assembly relations."],
+  "rules": {"units": "mm", "coordinate_system": "+Z up, +Y forward", "naming": "Preserve Manifest object_id."},
+  "output_paths": ["blender/example.blend", "blender/exports/example-mesh.obj", "blender/exports/blender-snapshot.json", "blender/qa/geometry-fidelity-result-v1.json", "blender/qa/render-qa-result-v1.json", "blender/renders/overview.png"],
+  "acceptance_criteria": ["Read back controlled IDs, dimensions, transforms, and Manifest revision.", "Hash-bound geometry fidelity result passes with complete controlled-object coverage.", "Hash-bound render QA result passes and binds actual render images."],
+  "blockers": [],
+  "stop_conditions": ["CAD review mismatch", "Missing controlled object", "Unsafe overwrite"],
+  "writer_scope": ["blender/example.blend", "blender/exports/example-mesh.obj", "blender/exports/blender-snapshot.json", "blender/qa/geometry-fidelity-result-v1.json", "blender/qa/render-qa-result-v1.json", "blender/renders/overview.png"],
+  "geometry_fidelity": {
+    "level": "exact_mesh",
+    "permitted_deviation_mm": 0.001,
+    "required_checks": ["controlled dimensions", "object IDs", "transforms", "assembly hierarchy", "mesh topology evidence"],
+    "intended_use": "Final presentation model derived from accepted CAD geometry."
+  },
+  "render_qa_profile": {"path": "render/render-qa-profile-v1.json", "revision": 1, "sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "upstream_review_outcome": "PASS",
+  "upstream_review": {"path": "reviews/cad-review-v1.json", "sha256": "a82c578aa39c52587430fa34d46184bb402a3ef8085db0290ac9bde68279494a", "review_id": "REV-001", "outcome": "PASS", "manifest_revision": 1},
+  "accepted_cad_result": {"path": "cad/stage-result-v1.json", "sha256": "7bca081e22564d8881ba84577cb846063a3c532709f78783a05b6d456b4603c2", "revision": 1, "manifest_revision": 1, "readback_evidence": ["cad/exports/cad-snapshot.json"], "readback_hashes": {"cad/exports/cad-snapshot.json": "66f4b4e46cb2c23002f2efbd86e31b9e05798d48672c06c5066721b55dd52fa7"}}
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "review_report",
+  "project_id": "example-project",
+  "revision": 1,
+  "review_id": "REV-001",
+  "review_stage": "cad",
+  "reviewed_artifacts": ["cad/stage-result-v1.json"],
+  "review_profiles": ["common_acceptance", "cad_drawing_review", "mechanical_review"],
+  "consumed_revisions": {"manifest": 1, "stage_result": 1},
+  "issues": [],
+  "outcome": "PASS",
+  "conditions": [],
+  "evidence_summary": ["Schema validation and controlled-property read-back passed."],
+  "reviewer_identity": "independent-engineering-reviewer",
+  "reviewer_independent": true,
+  "reviewer_read_only": true
+  ,"review_contract_version": "1.0"
+}

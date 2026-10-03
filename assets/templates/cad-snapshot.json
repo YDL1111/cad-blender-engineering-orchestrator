@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "cad_snapshot",
+  "project_id": "example-project",
+  "revision": 1,
+  "manifest_revision": 1,
+  "manifest_lineage": [
+    {"revision": 1, "parent_revision": null, "path": "manifests/manifest-v1.json", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}
+  ],
+  "units": "mm",
+  "coordinate_system": {"handedness": "right", "up_axis": "+Z", "forward_axis": "+Y", "origin": "assembly datum"},
+  "objects": [
+    {
+      "object_id": "PART-001",
+      "controlled": true,
+      "parent_id": null,
+      "critical_dimensions": {"width": 100.0, "nominal_size": "DN100", "flow_axis": "+X", "insulated": false, "profile": {"path": [[0.0, 0.0, 0.0], [100.0, 0.0, 0.0]], "note": null}},
+      "transform": {"location": [0.0, 0.0, 0.0], "rotation_deg": [0.0, 0.0, 0.0], "scale": [1.0, 1.0, 1.0]}
+    }
+  ]
+}

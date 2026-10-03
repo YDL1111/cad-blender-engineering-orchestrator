@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "project_manifest",
+  "project_id": "example-project",
+  "revision": 1,
+  "parent_manifest": null,
+  "domain": "mechanical_product",
+  "target_level": "concept",
+  "units": "mm",
+  "coordinate_system": {
+    "handedness": "right",
+    "up_axis": "+Z",
+    "forward_axis": "+Y",
+    "origin": "assembly datum"
+  },
+  "comparison_tolerance": {
+    "value": 0.001,
+    "source": "REQ-002",
+    "status": "confirmed",
+    "confidence": 1.0,
+    "reason": "Accepted cross-software comparison tolerance",
+    "blocks": []
+  },
+  "source_files": [],
+  "requirements_revision": 1,
+  "requirements_baseline": {
+    "path": "requirements/baseline-v1.json",
+    "project_id": "example-project",
+    "revision": 1,
+    "state": "baseline_confirmed",
+    "sha256": "d3d0dfc0a5d15e6ae6c8638d243423e01bdbf71d37ce771d38f56edd514dfd3e"
+  },
+  "objects": [
+    {
+      "object_id": "PART-001",
+      "name": "example-body",
+      "type": "solid",
+      "parent_id": null,
+      "critical_dimensions": {"width": 100.0, "nominal_size": "DN100", "flow_axis": "+X", "insulated": false, "profile": {"path": [[0.0, 0.0, 0.0], [100.0, 0.0, 0.0]], "note": null}},
+      "source": "REQ-001",
+      "status": "confirmed",
+      "confidence": 1.0,
+      "reason": "Baseline-controlled object",
+      "blocks": []
+    }
+  ],
+  "systems": [],
+  "constraints": [
+    {
+      "constraint_id": "CON-001",
+      "name": "preserve-width",
+      "value": 100.0,
+      "source": "REQ-001",
+      "status": "confirmed",
+      "confidence": 1.0,
+      "reason": "Critical controlled dimension",
+      "blocks": []
+    }
+  ],
+  "assumptions": [],
+  "unresolved_items": [],
+  "stage_status": "manifest_ready",
+  "expected_outputs": ["cad/source", "cad/export", "blender/scene", "reviews/cross-software"],
+  "review_profiles": ["common_acceptance", "mechanical_review", "cross_software_consistency"]
+}

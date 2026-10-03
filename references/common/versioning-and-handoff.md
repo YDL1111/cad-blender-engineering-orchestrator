@@ -1,0 +1,7 @@
+# Versioning and handoff
+
+Use immutable integer revisions and explicit parent links: `baseline-v1 -> manifest-v1 -> cad-work-v1 -> cad-result-v1 -> review-v1 -> manifest-v2 -> blender-work-v1`. A child result must cite exactly the packet and Manifest revision it consumed. Delivery preserves these historical consumed revisions and verifies each is an ancestor of the final Manifest through `manifest_lineage`; historical stages never claim to consume a future final revision.
+
+Blender packets carry the exact `manifest_lineage` ending at their accepted current Manifest. Each entry contains `revision`, `parent_revision`, relative `path`, and SHA-256. The chain must be closed and linear: missing parents, unrelated branches, cycles, wrong hashes, and non-ancestor CAD/review references are rejected. Historical evidence remains bound to the revision it really consumed; it is never rewritten to the current Blender revision.
+
+Reject a packet whose source revision does not exist, is not accepted, or is older/newer than the declared parent. Do not overwrite accepted artifacts. A Manifest Patch declares `base_revision`, base file SHA-256, unique restricted operations, evidence paths, and proposed next revision. It cannot change schema/artifact/project/baseline identity. The orchestrator applies it atomically to a new file with `python scripts/apply_manifest_patch.py <base> <patch> <new-output> --baseline <baseline> --project-root <project-root>`.

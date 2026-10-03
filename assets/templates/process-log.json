@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "process_log",
+  "project_id": "example-project",
+  "revision": 1,
+  "stage": "cad",
+  "packet_id": "CAD-WP-001",
+  "attempt_id": "ATTEMPT-001",
+  "process_id": 1001,
+  "host": "local",
+  "process_started_at": "2026-01-01T00:00:00Z",
+  "executable": "<FREECAD_CMD>",
+  "process_kind": "writer",
+  "command": {"argv": ["<FREECAD_CMD>", "operator.py"], "cwd": "<PROJECT_ROOT>"},
+  "command_sha256": "7d6f43c8993a5cf92a56b61eab3c4fd094c8c5410f95ae695fa644e136784fcf",
+  "recorded_at": "2026-01-01T00:00:03Z",
+  "events": [
+    {"at": "2026-01-01T00:00:01Z", "event": "process_started", "details": {"process_id": 1001}},
+    {"at": "2026-01-01T00:00:02Z", "event": "output_written", "details": {"artifacts": [{"path": "cad/source/example.FCStd", "sha256": "0000000000000000000000000000000000000000000000000000000000000000"}]}},
+    {"at": "2026-01-01T00:00:03Z", "event": "process_exited", "details": {"exit_code": 0}}
+  ]
+}

@@ -1,0 +1,3 @@
+# Smoke test request
+
+Use `$cad-blender-engineering-orchestrator` for a disposable mechanical product example. Create a 100 mm x 60 mm x 20 mm rectangular block with one controlled object ID, millimetre units, and a simple Blender presentation scene. First show the requirements baseline and the proposed project path. Use an isolated test project, verify FreeCAD save/export through an independent read-back process, then verify Blender import/save/export through another process. Run CAD, Blender, and cross-software reviews and validate the accepted delivery. Open only the working copies for display changes. Do not claim engineering sign-off.

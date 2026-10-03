@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "render_qa_profile",
+  "project_id": "example-project",
+  "revision": 1,
+  "minimum_resolution": {"width_px": 1920, "height_px": 1080},
+  "subject_min_frame_fraction": 0.35,
+  "label_readability": {"minimum_pixel_height": 14, "manual_gate_required": true},
+  "image_quality": {"check_exposure": true, "check_brightness": true, "check_contrast": true},
+  "required_views": {"clean_overview": true, "clean_overview_excludes": ["maintenance_envelopes", "cable_tray_occlusion"], "plan_view_projection": "orthographic"},
+  "color_semantics": {"legend_or_labels_required": true, "color_only_prohibited": true},
+  "separate_outputs": {"clearance_inspection": true, "presentation_render": true},
+  "deterministic_checks": ["resolution", "camera_projection", "declared_output_separation"],
+  "manual_visual_checks": ["subject framing", "label readability", "exposure/brightness/contrast", "clean overview occlusion"]
+}
